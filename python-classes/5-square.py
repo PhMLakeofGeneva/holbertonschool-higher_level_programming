@@ -1,34 +1,37 @@
 #!/usr/bin/python3
-class Square:
-    """Defines a square"""
-    def __init__(self, size=0):
-        """Initialises the data"""
-        self.size = size
+"""creates class Square with
+private instance attribute size and public instance method"""
 
-    def area(self):
-        """Returns current square area"""
-        return self.__size**2
+
+class Square:
+    """defines class with instantiated and validated private instance attribute
+and public instance method."""
+
+    def __init__(self, size=0):
+        self.__size = size
 
     @property
     def size(self):
-        """Getter method"""
-        return self.__size
+        return(self.__size)
 
     @size.setter
     def size(self, value):
-        """Setter method"""
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
 
+    def area(self):
+        """calculates and returns current square area"""
+        return(self.__size * self.__size)
+
     def my_print(self):
-        """Prints the square"""
-        if self.__size == 0:
-            print()
-        else:
-            for i in range(self.__size):
-                for j in range(self.__size):
-                    print('#', end='')
+        """prints square of size self.__size using #"""
+        if self.__size > 0:
+            for column in range(self.__size):
+                for row in range(self.__size):
+                    print("#", end="")
                 print()
+        else:
+            print()
